@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- stable
+- "4.4.7"
 branches:
   only:
   - blog-source
@@ -19,4 +19,3 @@ install:
 script:
 - hexo cl
 - hexo g
-- hexo d
