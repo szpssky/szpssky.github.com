@@ -28,4 +28,4 @@ install:
 script:
 - hexo cl
 - hexo g
-# - hexo d
+- hexo d
