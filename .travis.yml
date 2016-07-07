@@ -18,8 +18,13 @@ before_install:
 - git config --global user.email "szpssky@gmail.com"
 
 install:
-- npm install -g --unsafe-perm hexo-cli
+- npm install -g hexo-cli
+- npm update -g minimatch@3.0.2
 - npm install
+- ls
+- cd node_modules
+- ls
+- cd ..
 
 script:
 - hexo cl
