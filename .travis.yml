@@ -20,11 +20,7 @@ before_install:
 install:
 - npm install -g hexo-cli
 - npm install
-- ls
-- cd themes/icarus
-- ls -la
-- cd layout
-- ls -la
 
 script:
 - hexo cl
+- hexo g
