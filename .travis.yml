@@ -26,6 +26,10 @@ before_install:
 install:
 - npm install -g hexo-cli
 - npm install
+- cd themes/tranquilpeak
+- npm install
+- cd ..
+- cd ..
 
 script:
 - hexo cl
