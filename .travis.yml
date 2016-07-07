@@ -1,7 +1,13 @@
 language: node_js
 
+sudo: false
 node_js:
   - "4"
+
+cache:
+  npm: ture
+  directories:
+    - node_modules
 
 branches:
   only:
@@ -20,10 +26,6 @@ before_install:
 install:
 - npm install -g hexo-cli
 - npm install
-- cd themes/tranquilpeak/
-- npm install
-- cd ..
-- cd ..
 
 script:
 - hexo cl
