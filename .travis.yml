@@ -18,7 +18,7 @@ before_install:
 - git config --global user.email "szpssky@gmail.com"
 
 install:
-- npm install -g hexo-cli
+- npm install -g --unsafe-perm hexo-cli
 - npm install
 
 script:
