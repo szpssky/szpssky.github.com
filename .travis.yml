@@ -30,8 +30,8 @@ install:
 - npm install
 - cd ..
 - cd ..
-- npm install gulp -g
-- npm install gulp-minify-css gulp-uglify gulp-htmlmin gulp-htmlclean gulp --save
+#- npm install gulp -g
+#- npm install gulp-minify-css gulp-uglify gulp-htmlmin gulp-htmlclean gulp --save
 - npm install hexo-generator-sitemap --save
 - npm install hexo-generator-baidu-sitemap --save
 
@@ -39,5 +39,5 @@ install:
 script:
 - hexo cl
 - hexo g
-- gulp
+#- gulp
 - hexo d
