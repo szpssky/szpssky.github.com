@@ -73,10 +73,10 @@ sidebar:
             url: http://www.linkedin.com/in/szpssky
             icon: linkedin
 
-        # mail:
-        #     title: global.mail
-        #     mailto: szpssky@gmail.com
-        #     icon: envelope-o
+        mail:
+            title: global.mail
+            url: mailto:szpssky@gmail.com
+            icon: envelope-o
     #     stack_overflow:
     #         title: global.stack_overflow
     #         url: http://stackoverflow.com/users
@@ -116,8 +116,6 @@ header:
         url: /#about
         icon:
         class:
-
-
 # Author
 # Your biography and your job is editable in each languages files in `languages` folder
 author:
