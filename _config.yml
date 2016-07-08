@@ -85,4 +85,4 @@ deploy:
   - type: git
     repo: git@git.coding.net:shumi/shumi.git
     branch: coding-pages
-    message: Automatic Build and Deploy By Travis CI.{{ now('YYYY-MM-DD') }}
+    message: Automatic Builded and Deployed By Travis CI.{{ now('YYYY-MM-DD') }}
