@@ -8,7 +8,7 @@ cache:
   npm: ture
   directories:
     - node_modules
-
+    - themes/tranquilpeak/node_modules
 branches:
   only:
   - blog-source
