@@ -81,7 +81,7 @@ deploy:
   - type: git
     repo: git@github.com:szpssky/szpssky.github.com.git
     branch: master
-    message: Automatic Build and Deploy By Travis CI.{{ now('YYYY-MM-DD') }}
+    message: Automatic Builded and Deployed By Travis CI.{{ now('YYYY-MM-DD') }}
   - type: git
     repo: git@git.coding.net:shumi/shumi.git
     branch: coding-pages
