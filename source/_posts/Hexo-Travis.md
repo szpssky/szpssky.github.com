@@ -2,7 +2,9 @@
 title: Hexo-Travis CI
 date: 2016-07-09 22:30:00
 categories:
-- Git
+- CI
+tags:
+- Travis CI
 comments: true
 ---
   Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
