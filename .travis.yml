@@ -9,6 +9,7 @@ cache:
   directories:
     - node_modules
     - themes/tranquilpeak/node_modules
+    - .deploy_git
 branches:
   only:
   - blog-source
