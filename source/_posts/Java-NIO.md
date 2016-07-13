@@ -4,9 +4,8 @@ date: 2016-06-22 16:08:27
 tags:
 - Java
 categories:
-- Java
+- Java NIO
 comments: true
-banner: /image/java_logo.png
 ---
 因为研究项目实验论证方面的需要所以接触到了Java NIO,之前因为使用普通的Java IO导致性能十分低下，实验数据相当不理想。至此了解到了Java NIO技术。
 >新的输入/输出 (NIO) 库是在 JDK 1.4 中引入的。NIO 弥补了原来的 I/O 的不足，它在标准Java代码中提供了高速的、面向块的I/O。通过定义包含数据的类，以及通过以块的形式处理这些数据，NIO不用使用本机代码就可以利用低级优化，这是原来的 I/O 包所无法做到的。
@@ -84,3 +83,5 @@ raf.close();
 这里为了提高超大文件读取的性能采用MappedByteBuffer，即内存映射文件，通过map()方法将文件映射成内存映射文件，通过调用get()方法获取数据，该示例采用按行读取数据。
 
 ### 参考[IBM developerWorks](http://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html)
+
+转载请注明出处，谢谢。

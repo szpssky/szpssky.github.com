@@ -4,10 +4,10 @@ date: 2014-04-08 18:22:39
 tags: 
 - Apache CXF
 - Webservice
-categories: 
 - Java
+categories: 
+- Java Web
 comments: true
-banner: /image/asf_logo.png
 ---
 之前几次的项目后台这方面一直由我来负责，经过几次使用也比较熟悉了，趁着刚建了个blog就介绍下webservice环境配置。
 ## 准备工作
