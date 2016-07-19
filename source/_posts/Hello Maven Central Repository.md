@@ -139,7 +139,7 @@ Maven的发布方式有很多种详见[OSSRH Guide](http://central.sonatype.org/
     </profiles>
 ```
 ## 发布到OSS
-一切准备就绪就可以正式发布了，使用`mvn clean deploy -P release -Dgpg.passphrase=生成密钥时的密码`命令即可自动将要发布的内容上传至服务器上，-P参数代表使用profile，后面的release是使用的profile对应的id，上传成功后登陆[](https://oss.sonatype.org)，点击左侧staging Repositories后查找你上传的构建,如果没什么问题点击close按钮将其状态由open变为close，此时系统会进行自动检测，如果没有问题状态会变为closed，如果有问题返回修改pom配置重新上传。最后点击release将构建状态从closed变为release。
+一切准备就绪就可以正式发布了，使用`mvn clean deploy -P release -Dgpg.passphrase=生成密钥时的密码`命令即可自动将要发布的内容上传至服务器上，-P参数代表使用profile，后面的release是使用的profile对应的id，上传成功后登陆[OSS](https://oss.sonatype.org)，点击左侧staging Repositories后查找你上传的构建,如果没什么问题点击close按钮将其状态由open变为close，此时系统会进行自动检测，如果没有问题状态会变为closed，如果有问题返回修改pom配置重新上传。最后点击release将构建状态从closed变为release。
 
 ## 回到issue
 回到之前开的issue中，按要求第一次发布完成后需要告诉工作人员，你已经完成了第一次发布，他们会告诉你在一段时间后自动的同步到Maven中央仓库中并关闭这个issue，至此一次Maven发布完成，此外以后在你申请的group id下发布构建不需要使用issue进行审核了，直接发布即可。
