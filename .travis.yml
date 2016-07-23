@@ -36,6 +36,6 @@ install:
 script:
 - hexo cl
 - hexo algolia
-- hexo g
+#- hexo g
 #- gulp
 - hexo d
