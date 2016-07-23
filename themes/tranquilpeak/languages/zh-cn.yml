@@ -57,6 +57,6 @@ post:
 
 author:
     # 你的个人简介 (支持 Markdown 和 HTML 语法)
-    bio: "Email:szpssky@gmail.com"
+    bio: ""
     # 你的工作简介
-    job: "全栈工程师"
+    job: ""

@@ -75,6 +75,21 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: tranquilpeak
 
+algolia:
+  appId: "FE4Z1ZLHES"
+  apiKey: "1d320de7cd3f274c9be1be5bf7d93ad4"
+  adminApiKey: "263e4743555b4ab054df14501def68c8"
+  chunkSize: 5000
+  indexName: "my-hexo-blog"
+  fields:
+    - title
+    - tags
+    - slug
+    - excerpt
+    - excerpt:strip
+    - photos
+    - gallery
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

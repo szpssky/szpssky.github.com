@@ -144,3 +144,6 @@ Maven的发布方式有很多种详见[OSSRH Guide](http://central.sonatype.org/
 ## 回到issue
 回到之前开的issue中，按要求第一次发布完成后需要告诉工作人员，你已经完成了第一次发布，他们会告诉你在一段时间后自动的同步到Maven中央仓库中并关闭这个issue，至此一次Maven发布完成，此外以后在你申请的group id下发布构建不需要使用issue进行审核了，直接发布即可。
 
+
+转载请注明出处，谢谢。
+

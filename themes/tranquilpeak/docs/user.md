@@ -31,6 +31,7 @@ If you want to report a bug or ask a question, [create an issue](https://github.
         * [Integrated services](#integrated-services)
         * [Enable pages](#enable-pages)
 - [Integrated services configuration](#integrated-services-configuration)
+    * [Algolia](#algolia)
     * [Google Analytics](#google-analytics)
         * [Exclude hostname (localhost) while writing articles](#exclude-hostname-localhost-while-writing-articles)
 - [Quick & easy modifications](#quick--easy-modifications)  
@@ -56,8 +57,8 @@ If you want to report a bug or ask a question, [create an issue](https://github.
 ## General ##
 
 - **Author** : Louis Barranqueiro
-- **Version** : 1.8.1
-- **Compatibility** : Hexo 3.0.0 or later
+- **Version** : 1.9.0
+- **Compatibility** : Node v4 or later, Hexo v3.0.0 or later
 
 ## Features ##
 
@@ -92,12 +93,12 @@ If you want to report a bug or ask a question, [create an issue](https://github.
 - Google analytics
 - Baidu analytics
 - Gravatar
-- Swiftype
+- Algolia
 - Facebook Insights
 
 ## Requirements ##
 
-1. **Node** : v0.10.35 or higher. Download [Node](https://nodejs.org/download/)
+1. **Node** : v4 or higher. Download [Node](https://nodejs.org/download/)
 2. **Hexo CLI** : v0.1.4 or higher. Run `npm install hexo-cli -g`
 
 ## Installation ##
@@ -215,8 +216,8 @@ sidebar:
             title: Search
             url: /#search
             icon: search
-            # `st-search-show-outputs` classes are used to open swiftype search window
-            class: t-search-show-outputs
+            # `open-algolia-search` classes are used to open algolia search window
+            class: open-algolia-search
         about:
             title: About me
             url: /#about
@@ -266,13 +267,13 @@ sidebar:
 #### Header
 
 The right link of the header is customizable. You can add a link (as an icon) at the right of the header instead of the author's gravatar image or author's picture. By default, author's gravatar or author's picture is displayed if `icon` is empty DON'T edit `header`, `right_link`, `url`, `icon` and `class` variable name.  
-E.g to display a shortcut to open swiftype search window :
+E.g to display a shortcut to open algolia search window :
 ``` yaml
 header:
     right_link:
         url: /#search
         icon: search
-        class: st-search-show-outputs
+        class: open-algolia-search
 ```
 
 |Variable|Description|
@@ -307,8 +308,7 @@ author:
 
 ``` yaml
 # Customization
-sidebar_behavior: 2
-toc_title: Table of contents
+sidebar_behavior: 1
 thumbnail_image: true
 thumbnail_image_position: right
 auto_thumbnail_image: true
@@ -322,9 +322,8 @@ tag_pagination: true
 
 |Variable|Description|
 |---|---|
-|sidebar_behavior|Define the behavior of the header and sidebar :<ul><li>1: Display large sidebar on large screen, medium sidebar on medium screen and header bar on small screen and large sidebar is swiped when open button is clicked</li><li>2: Display medium sidebar on large and medium screen and header bar on small screen and medium sidebar is swiped when open button is clicked (default)</li><li>3: Display header bar on all screens and large sidebar is swiped when open button is clicked  </li><li>4: Display header bar on all screens and medium sidebar is swiped when open button is clicked)</li></ul>|
+|sidebar_behavior|Define the behavior of the header and sidebar :<ul><li>1: Display extra large sidebar on extra large screen, large sidebar on large screen, medium sidebar on medium screen and header bar on small screen and large sidebar is swiped when open button is clicked (default)</li><li>2: Display medium sidebar on large and medium screen and header bar on small screen and medium sidebar is swiped when open button is clicked</li><li>3: Display header bar on all screens and large or extra large sidebar is swiped when open button is clicked  </li><li>4: Display header bar on all screens and medium sidebar is swiped when open button is clicked)</li></ul>|
 |clear_reading|Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. Useless if `sidebar_behavior` is equal to `3` or `4`. (true: enable, false: disable). Default behavior : `theme.clear_reading` value in theme configuration file.|
-|toc_title|Head title displayed at the top of the table of contents.|
 |thumbnail_image|Display thumbnail image of each post on index pages|
 |thumbnail_image_position|Display thumbnail image at the right of title in index pages (`right`, `left` or `bottom`). Set this value to `right` if you have old posts to keep the old style on them and define `thumbnailImagePosition` on a post to overwrite this setting. (Default : `right`)|
 |auto_thumbnail_image|Automatically select the cover image or the first photo from the gallery of a post if there is no thumbnail image as the thumbnail image. Set this value to `true` if you have old posts that use the cover image or the first photo as the thumbnail image and set `autoThumbnailImage` to `false` on a post to overwrite this setting. (Default : `true`)|
@@ -352,8 +351,7 @@ The same page with `category_pagination: false`:
 disqus_shortname:
 duoshuo_shortname:
 gravatar_email: 
-google_analytics_id:  
-swiftype_install_key:
+google_analytics_id: 
 fb_admin_ids:
 fb_app_id:
 ```
@@ -364,7 +362,6 @@ fb_app_id:
 |duoshuo_shortnam|Your Duoshuo shortname. You can't use Disqus and Duoshuo together, then fill the right shortname. If both are filled, Disqus will be chosen.|
 |gravatar_emai|Your gravatar email. Overwrite `author.picture` everywhere in the blog|
 |google_analytics_id|Your Google analystics web property ID : UA-XXXXX-X|
-|swiftype_install_key|Your Swiftype install key founded in `Engines > YOUR_ENGINE_NAME > Integrate > Install Search > Install code` menu of your account. Search a line similarly to this one : `_st('install','fsdkiG43fkfder32dgsR','2.0.0');`. Swiftype install key is : `fsdkiG43fkfder32dgsR`.|
 |fb_admin_ids|Your Facebook user ids used to connect your blog with your facebook user accounts (Facebook Insights). Separate ids with comma. E.g : `9830047,1003342`. Visit [Facebook docs](https://developers.facebook.com/docs/platforminsights/domains) for more information.|
 |fb_app_id|Your Facebook app id used to connect your blog with your facebook app account (Facebook Insights). E.g : `9841307`. Visit [Facebook docs](https://developers.facebook.com/docs/platforminsights/domains) for more information.|
 
@@ -427,6 +424,46 @@ On this page, users will be able to search and filter posts.
 **Search pattern** : YYYY/MMM/DD
 
 ## Integrated services configuration ##
+
+### Algolia ###
+
+The search modal of the theme use Algolia API to search in your posts. Of course, you have to create an account on Algolia to use it. Follow these steps to enable search modal :
+1. Install [hexo-algoliaseach](https://github.com/LouisBarranqueiro/hexo-algoliasearch) at the root of your blog folder with `npm install hexo-algoliasearch --save`
+2. Configure the plugin by following [hexo-algoliaseach - Configuration](https://github.com/LouisBarranqueiro/hexo-algoliasearch#configuration). **Some fields are required to use it with this theme**
+3. Run `hexo algolia` to index your posts on Algolia. 
+4. Configure the search on your Algolia dashboard.
+
+**Each time you want to deploy your blog, run `hexo algolia` before deploying it.** Currently, the plugin clear the existing index on Algolia and re-index all your posts.
+
+**Required fields**
+``` yml
+fields:
+  - title
+  - date
+  - excerpt
+  - excerpt:strip
+  - permalink
+  - thumbnailImageUrl
+```
+
+**Standard configuration**
+``` yml
+algolia:
+  appId: "Z7A3XW4R2I"
+  apiKey: "12db1ad54372045549ef465881c17e743"
+  adminApiKey: "40321c7c207e7f73b63a19aa24c4761b"
+  chunkSize: 5000
+  indexName: "tranquilpeak"
+  fields:
+    - title
+    - date
+    - permalink
+    - thumbnailImageUrl
+    - tags
+    - categories
+    - excerpt
+    - excerpt:strip
+```
 
 ### Google Analytics ###
 
