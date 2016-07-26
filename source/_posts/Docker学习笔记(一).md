@@ -14,7 +14,7 @@ comments: true
 以此我们使用3个docker容器来运行Web程序。分别运行tomcat、mysql以及一个数据存储容器专门用来存储数据库数据，将数据库程序与数据存储分离的好处就是但需要升级或者移值数据库时可以更加的方便。
 
 这里我们使用Docker Compose来进行编排，什么是Docker Compose，官方文档描述的很清楚：
-
+<!-- more -->
 ^Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application’s services. Then, using a single command, you create and start all the services from your configuration. 
 
 简单的来说就是利用Docker Compose这一工具可以方便运行多容器的复杂Docker应用，将每个应用定义为服务，使用`docker-compose.yml`文件进行配置，docker compose将根据这一配置文件来自动构建及运行Docker应用。本文所描述的场景最简单配置如下：
