@@ -15,7 +15,7 @@ comments: true
 
 这里我们使用Docker Compose来进行编排，什么是Docker Compose，官方文档描述的很清楚：
 <!-- more -->
-^Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application’s services. Then, using a single command, you create and start all the services from your configuration. 
+>Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a Compose file to configure your application’s services. Then, using a single command, you create and start all the services from your configuration. 
 
 简单的来说就是利用Docker Compose这一工具可以方便运行多容器的复杂Docker应用，将每个应用定义为服务，使用`docker-compose.yml`文件进行配置，docker compose将根据这一配置文件来自动构建及运行Docker应用。本文所描述的场景最简单配置如下：
 
