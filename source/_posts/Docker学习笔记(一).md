@@ -46,7 +46,7 @@ services:
     volumes:
       - "/var/lib/mysql"
 ```
-通过`services`定义了3个服务，分别是db、web、dbstore，db即mysql数据库，web为tomcat，dbstore用来存储数据库数据,image属性定义了容器所使用的镜像，通过volumes_from定义挂载的Data Container。此外在Hibreate的数据库连接url应该使用``来配置，当全部配置完成后即可通过`docker-compose up`来自动创建以及运行容器。
+通过`services`定义了3个服务，分别是db、web、dbstore，db即mysql数据库，web为tomcat，dbstore用来存储数据库数据,image属性定义了容器所使用的镜像，通过volumes_from定义挂载的Data Container。此外在hibernate的数据库连接url应该使用`jdbc:mysql://db:3306/es`来配置db为数据库容器主机名，es为具体的数据库，当全部配置完成后即可通过`docker-compose up`来自动创建以及运行容器。
 
 若需要对数据库文件进行备份可以这样操作：
 
