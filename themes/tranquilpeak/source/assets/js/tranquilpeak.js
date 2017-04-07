@@ -848,8 +848,9 @@
       // open modal when `s` button is pressed
       $(document).keyup(function(event) {
         var target = event.target || event.srcElement;
-        // exit if user is focusing an input
-        if (target.tagName.toUpperCase() === 'INPUT') {
+        // exit if user is focusing an input or textarea
+        var tagName = target.tagName.toUpperCase();
+        if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
           return;
         }
 
@@ -932,7 +933,7 @@
         html += '<div class="media">';
         if (post.thumbnailImageUrl) {
           html += '<div class="media-left">';
-          html += '<a class="link-unstyled" href="' + (post.link || post.permalink) +'">';
+          html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
           html += '<img class="media-image" ' +
             'src="' + post.thumbnailImageUrl + '" ' +
             'width="90" height="90"/>';
@@ -941,7 +942,7 @@
         }
 
         html += '<div class="media-body">';
-        html += '<a class="link-unstyled" href="' + (post.link || post.permalink) +'">';
+        html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
         html += '<h3 class="media-heading">' + post.title + '</h3>';
         html += '</a>';
         html += '<span class="media-meta">';
@@ -1020,7 +1021,7 @@
 
   $(document).ready(function() {
     // launch feature only if there is an Algolia index available
-    if (algoliaIndex) {
+    if (typeof algoliaIndex !== 'undefined') {
       var searchModal = new SearchModal();
       searchModal.run();
     }
@@ -1028,9 +1029,9 @@
 })(jQuery);
 ;(function($) {
   'use strict';
-
+  
   // Open and close the share options bar
-
+  
   /**
    * ShareOptionsBar
    * @constructor
@@ -1038,18 +1039,19 @@
   var ShareOptionsBar = function() {
     this.$shareOptionsBar = $('#share-options-bar');
     this.$openBtn = $('.btn-open-shareoptions');
-    this.$closeBtn = $('#share-options-mask');
+    this.$closeBtn = $('#btn-close-shareoptions');
+    this.$body = $('body');
   };
-
+  
   ShareOptionsBar.prototype = {
-
+    
     /**
      * Run ShareOptionsBar feature
      * @return {void}
      */
     run: function() {
       var self = this;
-
+      
       // Detect the click on the open button
       self.$openBtn.click(function() {
         if (!self.$shareOptionsBar.hasClass('opened')) {
@@ -1057,7 +1059,7 @@
           self.$closeBtn.show();
         }
       });
-
+      
       // Detect the click on the close button
       self.$closeBtn.click(function() {
         if (self.$shareOptionsBar.hasClass('opened')) {
@@ -1066,50 +1068,50 @@
         }
       });
     },
-
+    
     /**
      * Open share options bar
      * @return {void}
      */
     openShareOptions: function() {
       var self = this;
-
+      
       // Check if the share option bar isn't opened
       // and prevent multiple click on the open button with `.processing` class
       if (!self.$shareOptionsBar.hasClass('opened') &&
         !this.$shareOptionsBar.hasClass('processing')) {
         // Open the share option bar
         self.$shareOptionsBar.addClass('processing opened');
-
+        self.$body.css('overflow', 'hidden');
+        
         setTimeout(function() {
           self.$shareOptionsBar.removeClass('processing');
         }, 250);
       }
     },
-
+    
     /**
      * Close share options bar
      * @return {void}
      */
     closeShareOptions: function() {
       var self = this;
-
+      
       // Check if the share options bar is opened
       // and prevent multiple click on the close button with `.processing` class
       if (self.$shareOptionsBar.hasClass('opened') &&
         !this.$shareOptionsBar.hasClass('processing')) {
         // Close the share option bar
-        self.$shareOptionsBar
-          .addClass('processing')
-          .removeClass('opened');
-
+        self.$shareOptionsBar.addClass('processing').removeClass('opened');
+        
         setTimeout(function() {
           self.$shareOptionsBar.removeClass('processing');
+          self.$body.css('overflow', '');
         }, 250);
       }
     }
   };
-
+  
   $(document).ready(function() {
     var shareOptionsBar = new ShareOptionsBar();
     shareOptionsBar.run();
@@ -1136,6 +1138,7 @@
     // If you change value of `mediumScreenWidth`,
     // you have to change value of `$screen-min: (md-min)` too
     // in `source/_css/utils/variables.scss`
+    this.$body = $('body');
     this.mediumScreenWidth = 768;
   };
 
@@ -1147,13 +1150,13 @@
     run: function() {
       var self = this;
       // Detect the click on the open button
-      self.$openBtn.click(function() {
+      this.$openBtn.click(function() {
         if (!self.$sidebar.hasClass('pushed')) {
           self.openSidebar();
         }
       });
       // Detect the click on close button
-      self.$closeBtn.click(function() {
+      this.$closeBtn.click(function() {
         if (self.$sidebar.hasClass('pushed')) {
           self.closeSidebar();
         }
@@ -1213,10 +1216,11 @@
       var self = this;
       // Check if the sidebar isn't swiped
       // and prevent multiple click on the open button with `.processing` class
-      if (!self.$sidebar.hasClass('pushed') && !this.$sidebar.hasClass('processing')) {
+      if (!this.$sidebar.hasClass('pushed') && !this.$sidebar.hasClass('processing')) {
         // Swipe the sidebar to the right
-        self.$sidebar.addClass('processing pushed');
-
+        this.$sidebar.addClass('processing pushed');
+        // add overflow on body to remove horizontal scroll
+        this.$body.css('overflow-x', 'hidden');
         setTimeout(function() {
           self.$sidebar.removeClass('processing');
         }, 250);
@@ -1228,14 +1232,13 @@
      * @return {void}
      */
     swipeSidebarToLeft: function() {
-      var self = this;
       // Check if the sidebar is swiped
       // and prevent multiple click on the close button with `.processing` class
-      if (self.$sidebar.hasClass('pushed') && !this.$sidebar.hasClass('processing')) {
+      if (this.$sidebar.hasClass('pushed') && !this.$sidebar.hasClass('processing')) {
         // Swipe the sidebar to the left
-        self.$sidebar
-          .addClass('processing')
-          .removeClass('pushed processing');
+        this.$sidebar.addClass('processing').removeClass('pushed processing');
+        // go back to the default overflow
+        this.$body.css('overflow-x', 'auto');
       }
     },
 
@@ -1247,9 +1250,9 @@
       var self = this;
       // Check if the blog isn't swiped
       // and prevent multiple click on the open button with `.processing` class
-      if (!self.$blog.hasClass('pushed') && !this.$blog.hasClass('processing')) {
+      if (!this.$blog.hasClass('pushed') && !this.$blog.hasClass('processing')) {
         // Swipe the blog to the right
-        self.$blog.addClass('processing pushed');
+        this.$blog.addClass('processing pushed');
 
         setTimeout(function() {
           self.$blog.removeClass('processing');
@@ -1267,9 +1270,7 @@
       // and prevent multiple click on the close button with `.processing` class
       if (self.$blog.hasClass('pushed') && !this.$blog.hasClass('processing')) {
         // Swipe the blog to the left
-        self.$blog
-          .addClass('processing')
-          .removeClass('pushed');
+        self.$blog.addClass('processing').removeClass('pushed');
 
         setTimeout(function() {
           self.$blog.removeClass('processing');

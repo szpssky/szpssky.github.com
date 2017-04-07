@@ -187,3 +187,16 @@ swiftype_install_key: dx5mrkMBuVgkmhvzs4dy
 fb_admin_ids:
 # Your Facebook app id used to connect your blog with your facebook app account (Facebook Insights). E.g : 9841307
 fb_app_id:
+
+
+
+sharing_options:
+    facebook:
+        icon: "fa-facebook-official"
+        url: "https://www.facebook.com/sharer/sharer.php?u={{post.permalink}}"
+    twitter:
+        icon: "fa-twitter"
+        url: "https://twitter.com/intent/tweet?text={{post.permalink}}"
+    google_plus:
+        icon: "fa-google-plus"
+        url: "https://plus.google.com/share?url={{post.permalink}}"
