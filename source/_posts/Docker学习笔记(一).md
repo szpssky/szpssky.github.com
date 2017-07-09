@@ -1,5 +1,5 @@
 ---
-title: Docker学习笔记(一):Java Web
+title: Docker学习笔记:Java Web
 date: 2016-07-26 18:30:00
 categories:
 - Docker

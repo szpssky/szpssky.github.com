@@ -19,6 +19,7 @@
     "hexo-server": "^0.2.0",
     "hexo-generator-sitemap": "^1.1.2",
     "hexo-generator-baidu-sitemap": "^0.1.2",
-    "hexo-algoliasearch": "^0.2.0"
+    "hexo-algoliasearch": "^0.2.0",
+    "hexo-math:3.0.0"
   }
 }
