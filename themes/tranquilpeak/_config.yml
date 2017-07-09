@@ -174,7 +174,7 @@ tag_pagination: true
 # Your Disqus shortname
 disqus_shortname:
 # Your Duoshuo shortname
-duoshuo_shortname: thinkword
+duoshuo_shortname:
 # Your Google analystics web property ID : UA-XXXXX-X
 google_analytics_id:
 # Your Baidu analystics web property ID : 9505a5af654a2478f93fd6c0ae4f687d
