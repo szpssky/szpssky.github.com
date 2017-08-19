@@ -4,11 +4,15 @@ sudo: false
 node_js:
   - "4"
 
+addons:
+  apt_packages:
+    - pandoc
+
 cache:
-  npm: ture
+  apt: true
   directories:
     - node_modules
-    - themes/tranquilpeak/node_modules
+    - themes/next/node_modules
 branches:
   only:
   - blog-source
@@ -26,16 +30,15 @@ before_install:
 install:
 - npm install -g hexo-cli
 - npm install
-- cd themes/tranquilpeak
-- npm install
-- cd ..
-- cd ..
+- npm install hexo-renderer-pandoc --save
+- npm install hexo-algolia --save
 #- npm install gulp -g
 #- npm install gulp-minify-css gulp-uglify gulp-htmlmin gulp-htmlclean gulp --save
 
 script:
+- export HEXO_ALGOLIA_INDEXING_KEY=4dc503e864a56a3318a7346d174c1242
 - hexo cl
 - hexo algolia
-#- hexo g
+- hexo g
 #- gulp
 - hexo d
