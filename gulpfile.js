@@ -29,5 +29,4 @@ gulp.task('minify-js', function() {
 });
 // 默认任务
 gulp.task('default', [
-  'minify-html','minify-css','minify-js'
-]);
+  'minify-html','minify-css']);
