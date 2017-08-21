@@ -1,5 +1,5 @@
 ---
-title: 《Deep Learning》—— 促使深度学习发展的原因
+title: 《Deep Learning》笔记 —— 促使深度学习发展的原因
 date: 2017-08-19 19:30:00
 categories:
 - Deep Learning Book
