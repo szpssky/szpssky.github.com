@@ -25,6 +25,7 @@ $$f(x)=W^Tx+b$$
 $$(w^*,b^*)=\arg\min_{w,b}\sum_{i=1}^m(f(x_i)-y_i)^2$$
 
 基于均方误差最小化来进行建模，求解的方法为“最小二乘法”，其试图找到一条直线，使所有样本到直线的距离最小。
+<!-- more -->
 
 以$\hat w=(w;b)$，相应的数据集D表示为$mx(d+1)$的矩阵$X$，则
 $$\hat w=\arg\min_{\hat w}(y-X\hat w)^T(y-X\hat w)$$
@@ -68,7 +69,7 @@ p(y=0|x)=\frac{1}{e^{w^Tx+b}}
 $$
 通过最大似然估计$w\text{和}b$给定数据集$\{(x_i,y_i)\}_{i=1}^m$，最大化对数似然：
 $$\ell(w,b)=\sum_{i=1}^m\ln p(y_i|x_i;w,b)$$
-令$\beta=(w,b),\hat x=(x,1)$则$w^T+b$为$\beta^T\hat x$，再令$p_1(\hat x;\beta)=p(y=1|\hat x;\beta),p_0(\hat x;\beta)=p(y=0|\hat x;\beta)$则：
+令$\beta=(w,b),\hat x=(x,1)$则$w^T+b$为$\beta^T\hat x$，再令$p_1(\hat x;\beta)=p(y=1|\hat x;\beta)$,$p_0(\hat x;\beta)=p(y=0|\hat x;\beta)$则：
 $$p(y_i|x_i;w,b)=y_ip_i(\hat x;\beta)+(1-y_i)p_0(\hat x_i;\beta)$$
 最大化转化为最小化：
 $$\ell(\beta)=\sum_{i=1}^m(-y_i\beta^T\hat x_i)+\ln(1+e^{\beta^T\hat x_i})$$
@@ -116,7 +117,7 @@ $$S_bw=\lambda S_ww$$
 $$
 w=S_w^{-1}(\mu_0-\mu_1)
 $$
-因数值解的稳定性，对$S_w$进行奇异值分解，即$S_w=V\Sigma^{-1}U^T$，得到$S_w^{-1}=V\Simga^{-1}U^T$
+因数值解的稳定性，对$S_w$进行奇异值分解，即$S_w=V\Sigma^{-1}U^T$，得到$S_w^{-1}=V\Sigma^{-1}U^T$
 
 ##### 多类LDA
 假定存在N个类，且第i类示例为$m_i$，定义“全局散度矩阵”：
@@ -156,9 +157,6 @@ $W$的闭式解则是$S_w^{-1}S_b$的最大广义特征值所对应的特征向�
 利用二分类来解决多分类问题
 
 经典拆分策略：
->* 一对一
-* 一对其余
-* 多对多
 
 1）一对一：将N个类别两两配对，从而产生N(N-1)/2个二分类任务，测试阶段将新样本交给所有分类器，最终结果通过投票产生。
 2）一对其余：训练N个分类器，在测试阶段若仅有一个分类器预测为正类，则对应类别标记为最终分类结果，否则要考虑各分类器的预测置信度。
