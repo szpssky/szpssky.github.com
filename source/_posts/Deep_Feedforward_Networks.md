@@ -136,7 +136,7 @@ $$
 $$
 \nabla_xz = (\frac{\partial z}{\partial x})^T\nabla_yz
 $$
-其中$\frac{\partial y}{\partial x}$是$g$的$nxm$Jacobian矩阵。
+其中$\frac{\partial y}{\partial x}$是$g$的$n\times m$Jacobian矩阵。
 
 扩展到张量，使用$\nabla_\mathbf{X}z$表示值$z$关于张量$\mathbf{X}$的梯度，使用单个变量$i$来表示张量完整的索引组，令$\mathbf{Y}=g(\mathbf{X})$且$z=f(\mathbf{Y})$，则
 $$
@@ -147,10 +147,10 @@ $$
 
 在迭代的计算工程中存在两种策略，存储子表达式还是重新进行计算。例如，令$w\in \mathbb{R}$为计算图的的输入，每一步使用相同的操作函数$f:\mathbb{R} \rightarrow \mathbb{R}$，即$x=f(w)$，$y=f(x)$，$z=f(y)$，为了计算$\frac{\partial z}{\partial w}$得到：
 $$
-\begin{array}{l}
-&\quad \frac{\partial z}{\partial w} \\
-& = \frac{\partial y}{\partial x} \\
-& = \frac{partial x}{\partial w} \\
+\begin{array}{}
+& \quad \frac{\partial z}{\partial w} \\
+& = \frac{\partial z}{\partial y} \frac{\partial y}{\partial x}
+\frac{\partial x}{\partial w} \\
 & = f'(y)f'(x)f'(w)
 \end{array}
 $$
