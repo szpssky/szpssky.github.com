@@ -20,7 +20,8 @@ $$
 
 样本空间任意点$x$到超平面的距离：
 $$r=\frac{w^Tx+b}{||w||}$$
-假设超平面$(w,b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D)，若$y_i=+1$，则$w^T_i+b>0$，若$y_i=-1$则有$w^Tx_i+b<0$，令
+假设超平面$(w,b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D)$，若$y_i=+1$，则$w^T_i+b>0$，若$y_i=-1$则有$w^Tx_i+b<0$，令
+
 $$
 \left \{
 \begin{array}{rl}
@@ -29,15 +30,18 @@ w^Tx_i+b\leq -1 \text{, }y_i=-1
 \end{array}
 \right .
 $$
+
 距离超平面最近的几个训练样本使上式等号成立，它们被称为“支持向量”，两个异类支持向量到超平面的距离之和：
 $$
 \gamma=\frac{2}{||w||}
 $$
-最大间隔，即找到$w,b$，使得$\gama$最大：
+
+最大间隔，即找到$w,b$，使得$\gamma$最大：
 $$
 \max_{w,b}\frac{2}{||w||} \\
 s.t.\quad \, y_i(w^Tx_i+b)\geq 1 \text{, }i=1,2,\dots,m 
 $$
+
 即，
 $$
 \min_{w,b}\frac{1}{2}||w||^2 \\
@@ -58,11 +62,11 @@ $$
 
 因为：
 $$
-\max_\alpha_i L(w,b,\alpha)=\frac{1}{2}||w||^2
+\max_{\alpha_i} L(w,b,\alpha)=\frac{1}{2}||w||^2
 $$
 所以SVM原问题可以表示为：
 $$
-\min_{w,b}\max_\alpha_i L(w,b,\alpha)
+\min_{w,b}\max_{\alpha_i} L(w,b,\alpha)
 $$
 
 令$L(w,b,\alpha)$对$w\text{和}b$的偏导为零：
