@@ -6,9 +6,7 @@
     <i class="fa fa-{{ theme.authoricon }}"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ config.author }}</span>
-  <div class="powered-by">  
-  </div>
-  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+
   {% if theme.post_wordcount.totalcount %}
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
@@ -22,6 +20,8 @@
     </span>
   {% endif %}
 </div>
+<div class="powered-by"></div>
+<span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
 
 {% if theme.copyright %}
   <div class="powered-by">
