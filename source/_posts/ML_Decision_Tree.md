@@ -73,7 +73,7 @@ $$
 CART决策树使用"基尼指数"：
 $$
 \begin{align}
-Gini(D) & = \sum_{k=1}^{|y|}\sum_{k'\neq k}p_kp_{k'}
+Gini(D) & = \sum_{k=1}^{|y|}\sum_{k'\neq k}p_kp_{k'} \\
 & = 1-\sum_{k=1}^{|y|}p_k^2
 \end{align}
 $$
@@ -146,7 +146,7 @@ $\tilde{\gamma}_v$表示无缺失值样本中在属性$a$上取值$a^v$的样本
 将信息熵增益推广：
 $$
 \begin{align}
-text{Gain}(D,a) & =\rho \times \text{Gain}(\tilde{D},a)
+text{Gain}(D,a) & =\rho \times \text{Gain}(\tilde{D},a) \\
 & = \rho \times (\text{Ent}(\tilde{D})-\sum_{v=1}^V\tilde{\gamma}_v \text{Ent}(\tilde{D}^v))
 \end{align}
 $$
